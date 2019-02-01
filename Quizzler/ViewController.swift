@@ -24,8 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//      let firstQuestion = allQuestions.list[0]
-//      questionLabel.text = firstQuestion.questionText
+        scoreLabel.text = String(score)
         nextQuestion()
         
     }
@@ -49,7 +48,7 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-      
+      scoreLabel.text = String(score)
     }
     
 
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
             
             print("End of Quiz")
 
-            let alert = UIAlertController(title: "Awesome!", message: "You've finished the quiz! Do you want to try again", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Awesome!", message: "You scored \(score)! Do you want to try again", preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart", style: .default, handler:
                 { (UIAlertAction) in
                 self.startOver()
@@ -82,10 +81,9 @@ class ViewController: UIViewController {
         
         if correctAnswer == pickedAnswer {
             score += 1
-            print("correct!")
+            updateUI()
         } else {
-            print("WRONG")
-            print(score)
+            print("wrong")
         }
         
     }
@@ -94,9 +92,9 @@ class ViewController: UIViewController {
     func startOver() {
         
         questionNumber = 0
-        
+        score = 0
+        scoreLabel.text = String(score)
         nextQuestion()
-        
     }
     
 
