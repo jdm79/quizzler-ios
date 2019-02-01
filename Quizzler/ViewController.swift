@@ -24,8 +24,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let firstQuestion = allQuestions.list[0]
-        questionLabel.text = firstQuestion.questionText
+//      let firstQuestion = allQuestions.list[0]
+//      questionLabel.text = firstQuestion.questionText
+        nextQuestion()
         
     }
 
@@ -53,7 +54,7 @@ class ViewController: UIViewController {
     
 
     func nextQuestion() {
-        if questionNumber <= allQuestions.list.count - 1 {
+        if questionNumber < allQuestions.list.count {
 
             questionLabel.text = allQuestions.list[questionNumber].questionText
         
@@ -93,8 +94,9 @@ class ViewController: UIViewController {
     func startOver() {
         
         questionNumber = 0
+        
         nextQuestion()
-        print("restart")
+        
     }
     
 
