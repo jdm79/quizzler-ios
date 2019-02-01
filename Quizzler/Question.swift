@@ -8,6 +8,7 @@
 
 import Foundation
 
+// this class can then be used as a type elsewhere
 class Question {
     
     let questionText : String
@@ -19,5 +20,3 @@ class Question {
     }
     
 }
-
-class MyO

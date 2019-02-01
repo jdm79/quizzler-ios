@@ -10,6 +10,7 @@ import Foundation
 
 class QuestionBank {
     
+    // array constructor of type 'Question'
     var list = [Question]()
     
     init() {
