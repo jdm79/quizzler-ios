@@ -12,7 +12,8 @@ class ViewController: UIViewController {
     
     // initialises a new QuestionBank object
     let allQuestions = QuestionBank()
-    var pickedAnswer = false
+    var pickedAnswer : Bool = false
+    var questionNumber : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -36,6 +37,12 @@ class ViewController: UIViewController {
         }
         
         checkAnswer()
+        
+        // moves the game onto the next question by increasing the index number for the list array
+        questionNumber += 1
+        
+        questionLabel.text = allQuestions.list[questionNumber].questionText
+
     }
     
     
@@ -50,14 +57,17 @@ class ViewController: UIViewController {
     
     
     func checkAnswer() {
-        let correctAnswer = allQuestions.list[0].answer
+        let correctAnswer = allQuestions.list[questionNumber].answer
         
         if correctAnswer == pickedAnswer {
             print("correct!")
-            print(correctAnswer)
+            print("this is of course \(correctAnswer)")
         } else {
             print("WRONG")
+            print("this is of course \(correctAnswer)")
+
         }
+        
     }
     
     
