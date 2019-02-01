@@ -47,7 +47,10 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-        scoreLabel.text = String(score)
+        scoreLabel.text = "Score: \(score)"
+        progressLabel.text = "\(questionNumber + 1) / 13"
+        
+        progressBar.frame.size.width = (view.frame.size.width / 13) * CGFloat(questionNumber + 1)
     }
     
 
@@ -61,7 +64,6 @@ class ViewController: UIViewController {
         
         } else {
             
-            print("End of Quiz")
 
             let alert = UIAlertController(title: "Awesome!", message: "You scored \(score)! Do you want to try again", preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart", style: .default, handler:
