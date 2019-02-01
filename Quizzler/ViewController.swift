@@ -24,7 +24,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = String(score)
         nextQuestion()
         
     }
@@ -48,7 +47,7 @@ class ViewController: UIViewController {
     
     
     func updateUI() {
-      scoreLabel.text = String(score)
+        scoreLabel.text = String(score)
     }
     
 
@@ -56,6 +55,9 @@ class ViewController: UIViewController {
         if questionNumber < allQuestions.list.count {
 
             questionLabel.text = allQuestions.list[questionNumber].questionText
+            
+            updateUI()
+
         
         } else {
             
@@ -81,9 +83,6 @@ class ViewController: UIViewController {
         
         if correctAnswer == pickedAnswer {
             score += 1
-            updateUI()
-        } else {
-            print("wrong")
         }
         
     }
@@ -92,9 +91,11 @@ class ViewController: UIViewController {
     func startOver() {
         
         questionNumber = 0
+        
         score = 0
-        scoreLabel.text = String(score)
+        
         nextQuestion()
+        
     }
     
 
