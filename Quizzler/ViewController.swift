@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     let allQuestions = QuestionBank()
     var pickedAnswer : Bool = false
     var questionNumber : Int = 0
+    var score : Int = 0
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
@@ -40,9 +41,9 @@ class ViewController: UIViewController {
         
         // moves the game onto the next question by increasing the index number for the list array
         questionNumber += 1
+       
         
-        questionLabel.text = allQuestions.list[questionNumber].questionText
-
+        nextQuestion()
     }
     
     
@@ -52,7 +53,26 @@ class ViewController: UIViewController {
     
 
     func nextQuestion() {
+        if questionNumber <= allQuestions.list.count - 1 {
+
+            questionLabel.text = allQuestions.list[questionNumber].questionText
         
+        } else {
+            
+            print("End of Quiz")
+
+            let alert = UIAlertController(title: "Awesome!", message: "You've finished the quiz! Do you want to try again", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart", style: .default, handler:
+                { (UIAlertAction) in
+                self.startOver()
+            })
+            
+            alert.addAction(restartAction)
+            
+            present(alert, animated: true, completion: nil)
+            
+        }
+
     }
     
     
@@ -60,19 +80,21 @@ class ViewController: UIViewController {
         let correctAnswer = allQuestions.list[questionNumber].answer
         
         if correctAnswer == pickedAnswer {
+            score += 1
             print("correct!")
-            print("this is of course \(correctAnswer)")
         } else {
             print("WRONG")
-            print("this is of course \(correctAnswer)")
-
+            print(score)
         }
         
     }
     
     
     func startOver() {
-       
+        
+        questionNumber = 0
+        nextQuestion()
+        print("restart")
     }
     
 
