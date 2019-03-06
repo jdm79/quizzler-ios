@@ -96,8 +96,14 @@ class ViewController: UIViewController {
         
         if correctAnswer == pickedAnswer {
             
+            ProgressHUD.showSuccess("Correct!")
+            
             score += 1
             
+        } else {
+            
+            ProgressHUD.showError("Wrong!")
+
         }
         
     }
